@@ -367,6 +367,8 @@
     }
     @media (prefers-reduced-motion: reduce) {
       * { animation: none !important; transition: none !important; }
+      .u-path { stroke-dashoffset: 0; }
+      .u-node { opacity: 1; }
     }
     .focus-visible:focus-visible, .btn:focus-visible, .theme-toggle:focus-visible, .faq-question:focus-visible, a:focus-visible {
       outline: 2px solid var(--accent);
