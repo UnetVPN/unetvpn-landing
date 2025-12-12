@@ -132,6 +132,65 @@
       display: grid;
       gap: 24px;
     }
+    .hero-graphic-card {
+      align-self: stretch;
+      display: grid;
+      place-items: center;
+      min-height: 280px;
+    }
+    .hero-graphic {
+      width: min(420px, 100%);
+      margin: 4px auto;
+      filter: drop-shadow(0 14px 40px rgba(76, 210, 255, 0.18));
+    }
+    .hero-graphic svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .u-soft {
+      fill: none;
+      stroke: rgba(255, 255, 255, 0.12);
+      stroke-width: 10;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .u-path {
+      fill: none;
+      stroke: url(#grad);
+      stroke-width: 10;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 520;
+      stroke-dashoffset: 520;
+      animation: drawU 2.2s ease forwards;
+      filter: drop-shadow(0 0 12px rgba(76, 210, 255, 0.45));
+    }
+    .u-path.highlight {
+      stroke: rgba(233, 237, 246, 0.9);
+      stroke-width: 4;
+      opacity: 0.45;
+      animation-delay: 0.08s;
+      filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.25));
+    }
+    .u-node {
+      fill: url(#grad);
+      opacity: 0;
+      animation: nodePop 0.4s ease forwards;
+    }
+    .u-node.outline { fill: none; stroke: rgba(233, 237, 246, 0.6); stroke-width: 2; }
+    .u-node:nth-of-type(1) { animation-delay: 0.5s; }
+    .u-node:nth-of-type(2) { animation-delay: 0.9s; }
+    .u-node:nth-of-type(3) { animation-delay: 1.2s; }
+    @keyframes drawU {
+      from { stroke-dashoffset: 520; }
+      to { stroke-dashoffset: 0; }
+    }
+    @keyframes nodePop {
+      0% { opacity: 0; transform: scale(0.5); }
+      60% { opacity: 1; transform: scale(1.08); }
+      100% { opacity: 1; transform: scale(1); }
+    }
     .hero-title {
       font-size: 28px;
       line-height: 1.2;
@@ -308,6 +367,8 @@
     }
     @media (prefers-reduced-motion: reduce) {
       * { animation: none !important; transition: none !important; }
+      .u-path { stroke-dashoffset: 0; }
+      .u-node { opacity: 1; }
     }
     .focus-visible:focus-visible, .btn:focus-visible, .theme-toggle:focus-visible, .faq-question:focus-visible, a:focus-visible {
       outline: 2px solid var(--accent);
@@ -355,11 +416,26 @@
           </div>
           <p class="trustline">Настройка за 3–5 минут • Без лишних шагов</p>
         </div>
-        <div class="card" aria-hidden="true" style="align-self: stretch; display: grid; place-items: center; min-height: 280px;">
-          <div style="text-align: center;">
-            <div style="font-size: 40px; margin-bottom: 12px;">🛡️</div>
-            <p style="color: var(--muted); margin: 0 0 6px;">OpenVPN профили</p>
-            <p style="font-size: 18px; margin: 0; font-weight: 700;">Подключение в один тап</p>
+        <div class="card hero-graphic-card" aria-hidden="true">
+          <div class="hero-graphic">
+            <svg viewBox="0 0 420 320" role="presentation" aria-hidden="true">
+              <defs>
+                <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="var(--accent)" />
+                  <stop offset="100%" stop-color="var(--accent-2)" />
+                </linearGradient>
+              </defs>
+              <rect x="30" y="40" width="360" height="240" rx="28" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" />
+              <path class="u-soft" d="M145 92 V205 Q145 258 210 258 Q275 258 275 205 V92" />
+              <path class="u-path" d="M145 92 V205 Q145 258 210 258 Q275 258 275 205 V92" />
+              <path class="u-path highlight" d="M145 92 V205 Q145 258 210 258 Q275 258 275 205 V92" />
+              <circle class="u-node" cx="145" cy="92" r="8" />
+              <circle class="u-node outline" cx="145" cy="92" r="12" />
+              <circle class="u-node" cx="210" cy="258" r="8" />
+              <circle class="u-node outline" cx="210" cy="258" r="12" />
+              <circle class="u-node" cx="275" cy="92" r="8" />
+              <circle class="u-node outline" cx="275" cy="92" r="12" />
+            </svg>
           </div>
         </div>
       </div>
