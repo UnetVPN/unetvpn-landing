@@ -243,6 +243,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 12px;
       padding: 12px 4px;
       font-size: 16px;
       cursor: pointer;
@@ -254,7 +255,7 @@
       color: var(--muted);
       transition: max-height 0.25s ease;
     }
-    .faq-item.active .faq-answer { max-height: 180px; padding-bottom: 12px; }
+    .faq-item.active .faq-answer { padding-bottom: 12px; }
     .faq-item.active .faq-question { color: var(--accent); }
     .cta-final {
       text-align: center;
@@ -284,14 +285,30 @@
     }
     .glow.g2 { background: radial-gradient(circle, rgba(159,123,255,0.22), transparent 60%); }
     .section { position: relative; padding: 40px 0; }
-    .fade-in { animation: fadeUp 0.8s ease both; }
-    .delay-1 { animation-delay: 0.08s; }
-    .delay-2 { animation-delay: 0.14s; }
-    .delay-3 { animation-delay: 0.2s; }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(16px); }
-      to { opacity: 1; transform: translateY(0); }
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .show { opacity: 1; transform: translateY(0); }
+    .hero-graphic {
+      position: relative;
+      width: 100%;
+      max-width: 420px;
     }
+    .hero-graphic .orb {
+      position: absolute;
+      inset: 12% 12% auto auto;
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.3), transparent 55%),
+                  radial-gradient(circle, rgba(76,210,255,0.18), rgba(159,123,255,0.12));
+      filter: blur(16px);
+      animation: float 6s ease-in-out infinite;
+    }
+    .hero-graphic svg { width: 100%; height: auto; display: block; }
+    .hero-graphic .path { stroke-dasharray: 220; stroke-dashoffset: 220; animation: draw 2.6s ease forwards; }
+    .hero-graphic .pulse { animation: pulse 4s ease-in-out infinite; }
+    @keyframes draw { to { stroke-dashoffset: 0; } }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+    @keyframes pulse { 0%, 100% { opacity: 0.8; transform: scale(1); } 50% { opacity: 1; transform: scale(1.04); } }
     @media (min-width: 720px) {
       .hero { padding: 80px 0 60px; }
       .hero-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: center; }
@@ -337,9 +354,9 @@
   </header>
 
   <main>
-    <section class="hero fade-in">
+    <section class="hero reveal">
       <div class="container hero-grid">
-        <div>
+        <div class="reveal">
           <p class="pill" aria-hidden="true">VPN конфиги для OpenVPN</p>
           <h1 class="hero-title">UNETvpn — VPN для OpenVPN, который просто работает</h1>
           <p class="hero-sub">Быстрое подключение через Telegram-бота. Подходит для iOS/Android/Windows/macOS/Linux. Оплата криптовалютой (без банковских карт).</p>
@@ -355,32 +372,54 @@
           </div>
           <p class="trustline">Настройка за 3–5 минут • Без лишних шагов</p>
         </div>
-        <div class="card" aria-hidden="true" style="align-self: stretch; display: grid; place-items: center; min-height: 280px;">
-          <div style="text-align: center;">
-            <div style="font-size: 40px; margin-bottom: 12px;">🛡️</div>
-            <p style="color: var(--muted); margin: 0 0 6px;">OpenVPN профили</p>
-            <p style="font-size: 18px; margin: 0; font-weight: 700;">Подключение в один тап</p>
+        <div class="card reveal" aria-hidden="true" style="align-self: stretch; display: grid; place-items: center; min-height: 280px;">
+          <div class="hero-graphic">
+            <div class="orb"></div>
+            <svg viewBox="0 0 420 320" role="img" aria-hidden="true">
+              <defs>
+                <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="var(--accent)" />
+                  <stop offset="100%" stop-color="var(--accent-2)" />
+                </linearGradient>
+                <radialGradient id="glow" cx="50%" cy="40%" r="60%">
+                  <stop offset="0%" stop-color="rgba(76,210,255,0.35)" />
+                  <stop offset="60%" stop-color="rgba(159,123,255,0.18)" />
+                  <stop offset="100%" stop-color="rgba(255,255,255,0)" />
+                </radialGradient>
+              </defs>
+              <circle cx="210" cy="160" r="120" fill="url(#glow)" class="pulse"></circle>
+              <circle cx="210" cy="160" r="110" fill="none" stroke="url(#grad)" stroke-width="2" stroke-opacity="0.4"></circle>
+              <circle cx="210" cy="160" r="74" fill="none" stroke="url(#grad)" stroke-width="2" stroke-opacity="0.3"></circle>
+              <path class="path" d="M110 140c30-60 170-70 200 10 12 34-2 74-46 92-36 15-80 2-104-32-10-14-18-32-16-50z" fill="none" stroke="url(#grad)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+              <path class="path" d="M84 186c22-10 48 10 62 28 20 26 50 50 86 52 36 2 71-24 80-64 7-30-10-68-42-74-38-8-72 30-112 26-20-2-42-17-50-38" fill="none" stroke="url(#grad)" stroke-width="2.5" stroke-linecap="round"></path>
+              <g fill="var(--accent)">
+                <circle cx="118" cy="132" r="6" fill="var(--accent)"></circle>
+                <circle cx="302" cy="136" r="6" fill="var(--accent-2)"></circle>
+                <circle cx="180" cy="224" r="6" fill="var(--accent)"></circle>
+                <circle cx="244" cy="210" r="6" fill="var(--accent-2)"></circle>
+              </g>
+            </svg>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="how" class="section fade-in delay-1">
+    <section id="how" class="section reveal">
       <div class="container">
         <h2 class="section-title">Как это работает</h2>
         <p class="section-sub">Три шага — и вы в сети. Без банковских карт и лишних действий.</p>
         <div class="steps card-grid">
-          <div class="card">
+          <div class="card reveal">
             <div class="step-number">1</div>
             <h3>Открой бот</h3>
             <p class="muted">Выберите тариф в @UNET_shop_bot и оплатите криптой.</p>
           </div>
-          <div class="card">
+          <div class="card reveal">
             <div class="step-number">2</div>
             <h3>Скачай OpenVPN</h3>
             <p class="muted">Установите приложение под iOS, Android, Windows, macOS или Linux.</p>
           </div>
-          <div class="card">
+          <div class="card reveal">
             <div class="step-number">3</div>
             <h3>Импортируй профиль</h3>
             <p class="muted">Импортируйте конфиг и подключитесь в один тап. Если нужно — подскажем.</p>
@@ -390,12 +429,12 @@
       </div>
     </section>
 
-    <section id="pricing" class="section fade-in delay-2">
+    <section id="pricing" class="section reveal">
       <div class="container">
         <h2 class="section-title">Тарифы</h2>
         <p class="section-sub">Выберите срок. Оплата криптовалютой через NOWPayments, без банковских карт.</p>
         <div class="pricing-grid card-grid">
-          <div class="card">
+          <div class="card reveal">
             <span class="pill">1 месяц</span>
             <div class="price">$X</div>
             <ul class="list">
@@ -407,7 +446,7 @@
             <a class="btn" href="https://t.me/UNET_shop_bot" target="_blank" rel="noopener">Выбрать</a>
             <p class="tiny" style="margin-top: 10px;">Оплата криптовалютой (NOWPayments)</p>
           </div>
-          <div class="card">
+          <div class="card reveal">
             <span class="pill">3 месяца</span>
             <div class="price">$X</div>
             <ul class="list">
@@ -419,7 +458,7 @@
             <a class="btn" href="https://t.me/UNET_shop_bot" target="_blank" rel="noopener">Выбрать</a>
             <p class="tiny" style="margin-top: 10px;">Оплата криптовалютой (NOWPayments)</p>
           </div>
-          <div class="card">
+          <div class="card reveal">
             <span class="badge">Популярный</span>
             <span class="pill">12 месяцев</span>
             <div class="price">$X</div>
@@ -437,37 +476,37 @@
       </div>
     </section>
 
-    <section id="why" class="section fade-in delay-3">
+    <section id="why" class="section reveal">
       <div class="container">
         <h2 class="section-title">Почему мы</h2>
         <p class="section-sub">Минимум шагов, максимум удобства. Всё через OpenVPN и крипто-оплату.</p>
         <div class="why-grid card-grid">
-          <div class="card why-item">
+          <div class="card why-item reveal">
             <div class="why-icon">⚡️</div>
             <h3>Простое подключение</h3>
             <p class="muted">Быстро получаете конфиг и подключаетесь без сложных инструкций.</p>
           </div>
-          <div class="card why-item">
+          <div class="card why-item reveal">
             <div class="why-icon">🛡️</div>
             <h3>OpenVPN профили</h3>
             <p class="muted">Готовые профили, совместимые с популярными клиентами.</p>
           </div>
-          <div class="card why-item">
+          <div class="card why-item reveal">
             <div class="why-icon">💳</div>
             <h3>Крипто-оплата</h3>
             <p class="muted">Платите криптовалютой, без банковских карт.</p>
           </div>
-          <div class="card why-item">
+          <div class="card why-item reveal">
             <div class="why-icon">🖥️</div>
             <h3>Все платформы</h3>
             <p class="muted">Работает на iOS, Android, Windows, macOS и Linux.</p>
           </div>
-          <div class="card why-item">
+          <div class="card why-item reveal">
             <div class="why-icon">🤝</div>
             <h3>Поддержка</h3>
             <p class="muted">Помогаем с настройкой и ответим на вопросы в боте.</p>
           </div>
-          <div class="card why-item">
+          <div class="card why-item reveal">
             <div class="why-icon">🚀</div>
             <h3>Стабильная скорость</h3>
             <p class="muted">Локации подбираем так, чтобы сохранять комфортный доступ.</p>
@@ -476,48 +515,48 @@
       </div>
     </section>
 
-    <section id="faq" class="section fade-in">
+    <section id="faq" class="section reveal">
       <div class="container">
         <h2 class="section-title">FAQ</h2>
         <p class="section-sub">Коротко о подключении, оплате и поддержке.</p>
         <div class="card-grid">
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false" aria-controls="faq1"><span>Как подключиться?</span><span>+</span></button>
+          <div class="faq-item reveal">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq1"><span>Как подключиться?</span><span class="icon">+</span></button>
             <div class="faq-answer" id="faq1" role="region" aria-live="polite">Откройте @UNET_shop_bot, выберите тариф, оплатите криптой и получите конфиг OpenVPN.</div>
           </div>
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false" aria-controls="faq2"><span>Что нужно установить?</span><span>+</span></button>
+          <div class="faq-item reveal">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq2"><span>Что нужно установить?</span><span class="icon">+</span></button>
             <div class="faq-answer" id="faq2" role="region" aria-live="polite">Установите официальный клиент OpenVPN для своей платформы, затем импортируйте выданный профиль.</div>
           </div>
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false" aria-controls="faq3"><span>Подходит ли для телефона?</span><span>+</span></button>
+          <div class="faq-item reveal">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq3"><span>Подходит ли для телефона?</span><span class="icon">+</span></button>
             <div class="faq-answer" id="faq3" role="region" aria-live="polite">Да, работает на iOS и Android через приложение OpenVPN Connect.</div>
           </div>
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false" aria-controls="faq4"><span>Сколько устройств можно подключить?</span><span>+</span></button>
+          <div class="faq-item reveal">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq4"><span>Сколько устройств можно подключить?</span><span class="icon">+</span></button>
             <div class="faq-answer" id="faq4" role="region" aria-live="polite">Обычно можно подключать несколько устройств. Точный лимит уточняйте в боте.</div>
           </div>
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false" aria-controls="faq5"><span>Как быстро приходит доступ после оплаты?</span><span>+</span></button>
+          <div class="faq-item reveal">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq5"><span>Как быстро приходит доступ после оплаты?</span><span class="icon">+</span></button>
             <div class="faq-answer" id="faq5" role="region" aria-live="polite">После подтверждения крипто-платежа бот выдаст конфигурацию и инструкции.</div>
           </div>
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false" aria-controls="faq6"><span>Что делать, если не подключается?</span><span>+</span></button>
+          <div class="faq-item reveal">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq6"><span>Что делать, если не подключается?</span><span class="icon">+</span></button>
             <div class="faq-answer" id="faq6" role="region" aria-live="polite">Напишите в поддержку внутри бота — поможем подобрать сервер и проверить настройки.</div>
           </div>
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false" aria-controls="faq7"><span>Какие способы оплаты доступны?</span><span>+</span></button>
+          <div class="faq-item reveal">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq7"><span>Какие способы оплаты доступны?</span><span class="icon">+</span></button>
             <div class="faq-answer" id="faq7" role="region" aria-live="polite">Принимаем криптовалюту через NOWPayments. Банковские карты не нужны.</div>
           </div>
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false" aria-controls="faq8"><span>Есть ли поддержка?</span><span>+</span></button>
+          <div class="faq-item reveal">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq8"><span>Есть ли поддержка?</span><span class="icon">+</span></button>
             <div class="faq-answer" id="faq8" role="region" aria-live="polite">Да, отвечаем на вопросы и помогаем с импортом профиля прямо в боте.</div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section fade-in">
+    <section class="section reveal">
       <div class="container cta-final">
         <h2 style="margin: 0 0 12px;">Готов подключиться?</h2>
         <p class="section-sub" style="margin: 0 0 18px;">Подключение обычно занимает несколько минут.</p>
@@ -561,22 +600,46 @@
     faqItems.forEach((item) => {
       const btn = item.querySelector('.faq-question');
       const answer = item.querySelector('.faq-answer');
+      const icon = btn.querySelector('.icon');
       btn.addEventListener('click', () => {
         const isActive = item.classList.contains('active');
         faqItems.forEach((i) => {
-          i.classList.remove('active');
+          const a = i.querySelector('.faq-answer');
           const b = i.querySelector('.faq-question');
+          const ic = b.querySelector('.icon');
+          i.classList.remove('active');
           b.setAttribute('aria-expanded', 'false');
+          a.style.maxHeight = null;
+          if (ic) ic.textContent = '+';
         });
         if (!isActive) {
           item.classList.add('active');
           btn.setAttribute('aria-expanded', 'true');
           answer.style.maxHeight = answer.scrollHeight + 'px';
+          if (icon) icon.textContent = '−';
         } else {
+          btn.setAttribute('aria-expanded', 'false');
           answer.style.maxHeight = null;
+          if (icon) icon.textContent = '+';
         }
       });
     });
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const revealElements = document.querySelectorAll('.reveal');
+    if (prefersReducedMotion) {
+      revealElements.forEach((el) => el.classList.add('show'));
+    } else {
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.18, rootMargin: '0px 0px -40px 0px' });
+      revealElements.forEach((el) => observer.observe(el));
+    }
 
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
