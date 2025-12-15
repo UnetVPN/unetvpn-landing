@@ -365,6 +365,7 @@
       <div class="brand">UNETvpn</div>
       <nav class="menu">
         <a href="#how">Как это работает</a>
+        <a href="#guide">Инструкция</a>
         <a href="#pricing">Тарифы</a>
         <a href="#why">Почему мы</a>
         <a href="#faq">FAQ</a>
@@ -389,6 +390,7 @@
             <a class="btn" href="https://t.me/UNET_shop_bot" target="_blank" rel="noopener">Подключиться в Telegram</a>
             <a class="btn secondary" href="#how">Как это работает</a>
           </div>
+          <p class="tiny" style="margin: 6px 0 0; font-weight: 600;"><a href="#guide">Новичок? Инструкция за 3 минуты →</a></p>
           <div class="chips" aria-label="Фичи">
             <span class="chip">OpenVPN</span>
             <span class="chip">Крипто-оплата</span>
@@ -445,50 +447,114 @@
       </div>
     </section>
 
+    <section id="guide" class="section fade-in">
+      <div class="container">
+        <h2 class="section-title">Как подключить UNETvpn за 3 минуты</h2>
+        <p class="section-sub">Для телефона и ПК. Нужен OpenVPN и файл .ovpn из бота.</p>
+        <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
+          <div class="card">
+            <span class="pill">Телефон (iOS / Android)</span>
+            <div class="steps" style="margin-top: 12px;">
+              <div>
+                <div class="step-number">1</div>
+                <p class="muted">Установи OpenVPN Connect (App Store / Google Play).</p>
+              </div>
+              <div>
+                <div class="step-number">2</div>
+                <p class="muted">Открой бота @UNET_shop_bot и получи конфиг (.ovpn).</p>
+              </div>
+              <div>
+                <div class="step-number">3</div>
+                <p class="muted">Открой .ovpn через OpenVPN → Import → Connect.</p>
+              </div>
+              <div>
+                <div class="step-number">4</div>
+                <p class="muted">Готово ✅ Интернет идёт через зашифрованный туннель.</p>
+              </div>
+            </div>
+            <p class="tiny" style="margin-top: 10px;">Если не подключается — попробуй другой сервер в «📡 Servers»</p>
+            <p class="tiny">Нужна помощь? Напиши в боте код-слово СНЕГ ❄️</p>
+          </div>
+          <div class="card">
+            <span class="pill">ПК (Windows / macOS)</span>
+            <div class="steps" style="margin-top: 12px;">
+              <div>
+                <div class="step-number">1</div>
+                <p class="muted">Скачай официальный OpenVPN / OpenVPN Connect под свою ОС.</p>
+              </div>
+              <div>
+                <div class="step-number">2</div>
+                <p class="muted">Импортируй файл .ovpn из бота @UNET_shop_bot.</p>
+              </div>
+              <div>
+                <div class="step-number">3</div>
+                <p class="muted">Нажми Connect и дождись статуса Connected ✅</p>
+              </div>
+            </div>
+            <p class="tiny" style="margin-top: 10px;">Если сайты не открываются — отключи другие VPN/Proxy и попробуй снова</p>
+            <p class="tiny">Нужна помощь? Напиши СНЕГ ❄️ в боте</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="pricing" class="section fade-in delay-2">
       <div class="container">
         <h2 class="section-title">Тарифы</h2>
-        <p class="section-sub">Выберите срок. Оплата криптовалютой через NOWPayments, без банковских карт.</p>
-        <div class="pricing-grid card-grid">
+        <p class="section-sub">Оплата: криптовалюта (без паспортов) • СБП доступно от 3 месяцев • Trial: 1 день</p>
+        <div class="card" style="margin-bottom: 14px;">
+          <h3 style="margin: 0 0 4px;">Для первых клиентов 🎁</h3>
+          <p class="muted" style="margin: 0 0 4px;">Первые 10 человек — 7 дней доступа бесплатно. Напиши боту код-слово: СНЕГ ❄️</p>
+          <p class="tiny" style="margin: 0;">Нашёл баг? Пришли лог в поддержку — дадим бонус.</p>
+        </div>
+        <div class="pricing-grid card-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
           <div class="card">
-            <span class="pill">1 месяц</span>
-            <div class="price">$X</div>
+            <span class="pill">Trial — 1 день</span>
+            <div class="price">Бесплатно</div>
             <ul class="list">
               <li>Профили OpenVPN</li>
               <li>Несколько локаций</li>
               <li>Поддержка</li>
-              <li>Обновления</li>
+            </ul>
+            <a class="btn" href="https://t.me/UNET_shop_bot" target="_blank" rel="noopener">Взять Trial</a>
+            <p class="tiny" style="margin-top: 10px;">Оплата: не нужна • Доступен 1 раз</p>
+          </div>
+          <div class="card">
+            <span class="pill">1 месяц</span>
+            <div class="price">$4.99</div>
+            <ul class="list">
+              <li>Профили OpenVPN</li>
+              <li>Несколько локаций</li>
+              <li>Поддержка</li>
             </ul>
             <a class="btn" href="https://t.me/UNET_shop_bot" target="_blank" rel="noopener">Выбрать</a>
-            <p class="tiny" style="margin-top: 10px;">Оплата криптовалютой (NOWPayments)</p>
+            <p class="tiny" style="margin-top: 10px;">Оплата: крипто</p>
           </div>
           <div class="card">
             <span class="pill">3 месяца</span>
-            <div class="price">$X</div>
+            <div class="price">$12.99</div>
             <ul class="list">
               <li>Профили OpenVPN</li>
               <li>Несколько локаций</li>
               <li>Поддержка</li>
-              <li>Обновления</li>
             </ul>
             <a class="btn" href="https://t.me/UNET_shop_bot" target="_blank" rel="noopener">Выбрать</a>
-            <p class="tiny" style="margin-top: 10px;">Оплата криптовалютой (NOWPayments)</p>
+            <p class="tiny" style="margin-top: 10px;">Оплата: крипто / СБП</p>
           </div>
           <div class="card">
-            <span class="badge">Популярный</span>
+            <span class="badge">Выгодно</span>
             <span class="pill">12 месяцев</span>
-            <div class="price">$X</div>
+            <div class="price">$39.99</div>
             <ul class="list">
               <li>Профили OpenVPN</li>
               <li>Несколько локаций</li>
               <li>Поддержка</li>
-              <li>Обновления</li>
             </ul>
             <a class="btn" href="https://t.me/UNET_shop_bot" target="_blank" rel="noopener">Выбрать</a>
-            <p class="tiny" style="margin-top: 10px;">Оплата криптовалютой (NOWPayments)</p>
+            <p class="tiny" style="margin-top: 10px;">Оплата: крипто / СБП</p>
           </div>
         </div>
-        <p class="tiny" style="margin-top: 12px;">Цены и доступные варианты уточняйте в боте.</p>
+        <p class="tiny" style="margin-top: 12px;">Актуальная сумма и варианты оплаты — в боте @UNET_shop_bot.</p>
       </div>
     </section>
 
@@ -562,11 +628,15 @@
           </div>
           <div class="faq-item">
             <button class="faq-question" aria-expanded="false" aria-controls="faq7"><span>Какие способы оплаты доступны?</span><span>+</span></button>
-            <div class="faq-answer" id="faq7" role="region" aria-live="polite">Принимаем криптовалюту через NOWPayments. Банковские карты не нужны.</div>
+            <div class="faq-answer" id="faq7" role="region" aria-live="polite">Криптовалюта (без паспортов). СБП доступно от 3 месяцев.</div>
           </div>
           <div class="faq-item">
             <button class="faq-question" aria-expanded="false" aria-controls="faq8"><span>Есть ли поддержка?</span><span>+</span></button>
             <div class="faq-answer" id="faq8" role="region" aria-live="polite">Да, отвечаем на вопросы и помогаем с импортом профиля прямо в боте.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq9"><span>Есть ли Trial?</span><span>+</span></button>
+            <div class="faq-answer" id="faq9" role="region" aria-live="polite">Да, Trial — 1 день (доступен 1 раз).</div>
           </div>
         </div>
       </div>
