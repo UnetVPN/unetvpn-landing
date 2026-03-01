@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>UNETvpn — VPN для OpenVPN</title>
+  <title>UNET VPN — быстрый и стабильный доступ</title>
   <style>
     :root {
       --bg: #060910;
@@ -49,8 +49,6 @@
       min-height: 100vh;
     }
     a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; height: auto; }
-    button { font: inherit; }
     .container {
       width: 100%;
       max-width: 1180px;
@@ -72,18 +70,8 @@
       gap: 12px;
       padding: 14px 0;
     }
-    .brand {
-      font-weight: 700;
-      font-size: 18px;
-      letter-spacing: 0.02em;
-    }
-    .menu {
-      display: none;
-      align-items: center;
-      gap: 16px;
-      font-size: 14px;
-      color: var(--muted);
-    }
+    .brand { font-weight: 700; font-size: 18px; letter-spacing: 0.02em; }
+    .menu { display: none; align-items: center; gap: 16px; font-size: 14px; color: var(--muted); }
     .menu a:hover { color: var(--text); }
     .nav-actions { display: flex; align-items: center; gap: 10px; }
     .btn {
@@ -102,95 +90,21 @@
       min-height: 44px;
     }
     .btn:hover { transform: translateY(-1px); filter: brightness(1.02); }
-    .btn:active { transform: translateY(1px) scale(0.99); }
-    .btn.secondary {
-      background: transparent;
-      color: var(--text);
-      border: 1px solid var(--border);
-      box-shadow: none;
-    }
-    .btn.secondary:hover { border-color: var(--accent); color: var(--text); }
+    .btn.secondary { background: transparent; color: var(--text); border: 1px solid var(--border); box-shadow: none; }
     .theme-toggle {
       border: 1px solid var(--border);
       background: var(--bg-soft);
       color: var(--text);
       padding: 10px 12px;
       border-radius: 12px;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      cursor: pointer;
-      transition: border-color 0.2s ease, transform 0.18s ease;
       min-height: 44px;
+      cursor: pointer;
     }
-    .theme-toggle:hover { border-color: var(--accent); }
-    .theme-toggle:active { transform: translateY(1px); }
-    .hero {      
-      padding: 64px 0 40px;
-    }
-    .hero-grid {
-      display: grid;
-      gap: 24px;
-    }
-    .hero-visual {
-      display: grid;
-      gap: 12px;
-      justify-items: center;
-      text-align: center;
-      width: 100%;
-    }
-    .hero-visual svg {
-      width: 100%;
-      max-width: 360px;
-      height: auto;
-      display: block;
-    }
-    .shield-outline, .shield-u {
-      fill: none;
-      stroke: url(#grad);
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      stroke-dasharray: 1200;
-      stroke-dashoffset: 1200;
-      animation: draw 1.1s ease forwards;
-    }
-    .shield-outline {
-      stroke-width: 10;
-      opacity: 0.95;
-    }
-    .shield-u {
-      stroke-width: 9;
-      opacity: 0.85;
-      animation-delay: 0.14s;
-    }
-    .shield-outline.highlight, .shield-u.highlight {
-      stroke-width: 3.6;
-      opacity: 0.42;
-      filter: drop-shadow(0 0 10px rgba(76,210,255,0.25));
-      animation-delay: 0.26s;
-    }
-    .shield-u.highlight { animation-delay: 0.32s; }
-    @keyframes draw {
-      to { stroke-dashoffset: 0; }
-    }
-    .hero-title {
-      font-size: 28px;
-      line-height: 1.2;
-      margin: 0 0 12px;
-      letter-spacing: -0.02em;
-    }
-    .hero-sub {
-      font-size: 16px;
-      color: var(--muted);
-      margin: 0 0 20px;
-      max-width: 760px;
-    }
-    .chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin: 14px 0;
-    }
+    .hero { padding: 64px 0 40px; }
+    .hero-grid { display: grid; gap: 24px; }
+    .hero-title { font-size: 32px; line-height: 1.2; margin: 0 0 12px; letter-spacing: -0.02em; }
+    .hero-sub { font-size: 18px; color: var(--muted); margin: 0 0 20px; max-width: 760px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0; }
     .chip {
       padding: 8px 12px;
       border-radius: 999px;
@@ -198,18 +112,10 @@
       background: var(--chip-bg);
       color: var(--text);
       font-size: 13px;
-      letter-spacing: 0.01em;
-    }
-    .trustline {
-      color: var(--muted);
-      font-size: 13px;
-      margin-top: 10px;
     }
     .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
-    .card-grid {
-      display: grid;
-      gap: 16px;
-    }
+    .pill { display: inline-flex; padding: 6px 10px; border-radius: 999px; border: 1px solid var(--border); background: var(--bg-soft); color: var(--muted); font-size: 12px; }
+    .card-grid, .pricing-grid, .steps, .why-grid { display: grid; gap: 14px; }
     .card {
       background: var(--card);
       border: 1px solid var(--border);
@@ -217,34 +123,12 @@
       padding: 18px;
       box-shadow: var(--shadow);
       backdrop-filter: var(--glass);
-      position: relative;
-      overflow: hidden;
     }
-    .card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(140deg, rgba(76,210,255,0.08), rgba(159,123,255,0.06));
-      opacity: 0.6;
-      pointer-events: none;
-    }
-    .card > * { position: relative; z-index: 1; }
-    h2.section-title {
-      font-size: 24px;
-      margin: 0 0 12px;
-      letter-spacing: -0.01em;
-    }
-    .section-sub {
-      margin: 0 0 22px;
-      color: var(--muted);
-      max-width: 740px;
-    }
-    .steps {
-      display: grid;
-      gap: 12px;
-    }
+    h2.section-title { font-size: 24px; margin: 0 0 12px; }
+    .section-sub { margin: 0 0 22px; color: var(--muted); max-width: 740px; }
     .step-number {
-      width: 36px; height: 36px;
+      width: 36px;
+      height: 36px;
       border-radius: 12px;
       background: linear-gradient(135deg, var(--accent), var(--accent-2));
       display: inline-flex;
@@ -254,28 +138,11 @@
       color: #0b1220;
       margin-bottom: 10px;
     }
-    .pricing-grid {
-      display: grid;
-      gap: 14px;
-    }
     .price { font-size: 24px; font-weight: 800; margin: 8px 0; }
-    .pill { display: inline-flex; padding: 6px 10px; border-radius: 999px; border: 1px solid var(--border); background: var(--bg-soft); color: var(--muted); font-size: 12px; }
     .list { list-style: none; padding: 0; margin: 12px 0; display: grid; gap: 8px; color: var(--muted); }
-    .list li { display: flex; align-items: center; gap: 8px; }
-    .list li::before { content: "•"; color: var(--accent); }
-    .badge { position: absolute; top: 14px; right: 14px; padding: 6px 10px; border-radius: 12px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #0b1220; font-weight: 700; font-size: 12px; }
-    .why-grid {
-      display: grid;
-      gap: 12px;
-    }
-    .why-item { padding: 14px; }
-    .why-icon { font-size: 20px; margin-bottom: 8px; }
-    .faq-item {
-      border-radius: 16px;
-      border: 1px solid var(--border);
-      background: var(--card);
-      padding: 4px 12px;
-    }
+    .list li::before { content: "•"; color: var(--accent); margin-right: 8px; }
+    .badge { display: inline-flex; padding: 6px 10px; border-radius: 12px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #0b1220; font-weight: 700; font-size: 12px; margin-bottom: 8px; }
+    .faq-item { border-radius: 16px; border: 1px solid var(--border); background: var(--card); padding: 4px 12px; }
     .faq-question {
       width: 100%;
       background: transparent;
@@ -287,16 +154,10 @@
       padding: 12px 4px;
       font-size: 16px;
       cursor: pointer;
+      text-align: left;
     }
-    .faq-question span { pointer-events: none; }
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      color: var(--muted);
-      transition: max-height 0.25s ease;
-    }
-    .faq-item.active .faq-answer { max-height: 180px; padding-bottom: 12px; }
-    .faq-item.active .faq-question { color: var(--accent); }
+    .faq-answer { max-height: 0; overflow: hidden; color: var(--muted); transition: max-height 0.25s ease; }
+    .faq-item.active .faq-answer { max-height: 220px; padding-bottom: 12px; }
     .cta-final {
       text-align: center;
       padding: 36px;
@@ -305,348 +166,191 @@
       background: linear-gradient(135deg, rgba(76, 210, 255, 0.08), rgba(159, 123, 255, 0.08));
       box-shadow: var(--shadow);
     }
-    footer {
-      padding: 28px 0 40px;
-      color: var(--muted);
-      border-top: 1px solid var(--border);
-      margin-top: 40px;
-    }
+    footer { padding: 28px 0 40px; color: var(--muted); border-top: 1px solid var(--border); margin-top: 40px; }
     footer .links { display: flex; gap: 16px; flex-wrap: wrap; margin: 8px 0; }
-    .muted { color: var(--muted); }
-    .tiny { font-size: 12px; color: var(--muted); }
-    .glow {
-      position: absolute;
-      width: 220px;
-      height: 220px;
-      background: radial-gradient(circle, rgba(76,210,255,0.18), transparent 60%);
-      filter: blur(40px);
-      z-index: 0;
-      opacity: 0.7;
-    }
-    .glow.g2 { background: radial-gradient(circle, rgba(159,123,255,0.22), transparent 60%); }
     .section { position: relative; padding: 40px 0; }
-    .fade-in { animation: fadeUp 0.8s ease both; }
-    .delay-1 { animation-delay: 0.08s; }
-    .delay-2 { animation-delay: 0.14s; }
-    .delay-3 { animation-delay: 0.2s; }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(16px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    .tiny { font-size: 12px; color: var(--muted); }
     @media (min-width: 720px) {
-      .hero { padding: 80px 0 60px; }
       .hero-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: center; }
       .menu { display: flex; }
-      .pricing-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .pricing-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
       .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .why-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    }
-    @media (min-width: 960px) {
-      .hero-title { font-size: 40px; }
-      .hero-sub { font-size: 18px; }
-      h2.section-title { font-size: 28px; }
-      .card { padding: 22px; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      * { animation: none !important; transition: none !important; }
-      .shield-outline, .shield-u, .shield-outline.highlight, .shield-u.highlight { stroke-dashoffset: 0; }
-    }
-    .focus-visible:focus-visible, .btn:focus-visible, .theme-toggle:focus-visible, .faq-question:focus-visible, a:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 3px;
     }
   </style>
 </head>
 <body>
-  <div class="glow" style="top: -60px; left: -40px;"></div>
-  <div class="glow g2" style="top: 120px; right: -40px;"></div>
   <header>
     <div class="container nav">
-      <div class="brand">UNETvpn</div>
+      <div class="brand">UNET VPN</div>
       <nav class="menu">
-        <a href="#how">Как это работает</a>
-        <a href="#guide">Инструкция</a>
+        <a href="#connect">Как подключиться</a>
         <a href="#pricing">Тарифы</a>
         <a href="#why">Почему мы</a>
         <a href="#faq">FAQ</a>
       </nav>
       <div class="nav-actions">
-        <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему">
-          <span id="themeLabel">Dark</span>
-        </button>
-        <a class="btn" href="https://t.me/UNET_shop_bot" target="_blank" rel="noopener">Подключиться</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему"><span id="themeLabel">Dark</span></button>
+        <a class="btn" href="https://t.me/UNET_shop_bot" target="_blank" rel="noopener">Подключиться в Telegram</a>
       </div>
     </div>
   </header>
 
   <main>
-    <section class="hero fade-in">
+    <section class="hero">
       <div class="container hero-grid">
         <div>
-          <p class="pill" aria-hidden="true">VPN конфиги для OpenVPN</p>
-          <h1 class="hero-title">UNETvpn — VPN для OpenVPN, который просто работает</h1>
-          <p class="hero-sub">Быстрое подключение через Telegram-бота. Подходит для iOS/Android/Windows/macOS/Linux. Оплата криптовалютой (без банковских карт).</p>
+          <p class="pill" aria-hidden="true">Технология: Xray • Протокол: VLESS + REALITY</p>
+          <h1 class="hero-title">UNET VPN — быстрый и стабильный доступ</h1>
+          <p class="hero-sub">Работает на Xray (VLESS + REALITY). Подходит для сложных сетей и обеспечивает стабильное соединение.</p>
           <div class="hero-actions">
             <a class="btn" href="https://t.me/UNET_shop_bot" target="_blank" rel="noopener">Подключиться в Telegram</a>
-            <a class="btn secondary" href="#how">Как это работает</a>
+            <a class="btn secondary" href="#pricing">Тарифы</a>
           </div>
-          <p class="tiny" style="margin: 6px 0 0; font-weight: 600;"><a href="#guide">Новичок? Инструкция за 3 минуты →</a></p>
-          <div class="chips" aria-label="Фичи">
-            <span class="chip">OpenVPN</span>
-            <span class="chip">Крипто-оплата</span>
-            <span class="chip">Без банковских карт</span>
-            <span class="chip">Поддержка</span>
+          <div class="chips" aria-label="Преимущества">
+            <span class="chip">Стабильное подключение</span>
+            <span class="chip">Высокая скорость</span>
+            <span class="chip">Подходит для мобильных и Wi-Fi сетей</span>
+            <span class="chip">Подключение за пару минут через Telegram-бота</span>
           </div>
-          <p class="trustline">Настройка за 3–5 минут • Без лишних шагов</p>
         </div>
-        <div class="card" aria-hidden="true" style="align-self: stretch; display: grid; place-items: center; min-height: 280px;">
-          <div class="hero-visual">
-            <svg viewBox="0 0 420 320" role="img" aria-label="UNETvpn shield mark">
-              <defs>
-                <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="var(--accent)" />
-                  <stop offset="100%" stop-color="var(--accent-2)" />
-                </linearGradient>
-              </defs>
-              <path class="shield-outline" d="M210 58 C270 60 320 95 320 145 V185 C320 240 270 270 210 292 C150 270 100 240 100 185 V145 C100 95 150 60 210 58 Z" />
-              <path class="shield-outline highlight" d="M210 58 C270 60 320 95 320 145 V185 C320 240 270 270 210 292 C150 270 100 240 100 185 V145 C100 95 150 60 210 58 Z" />
-              <path class="shield-u" d="M155 115 V190 Q155 235 210 235 Q265 235 265 190 V115" />
-              <path class="shield-u highlight" d="M155 115 V190 Q155 235 210 235 Q265 235 265 190 V115" />
-            </svg>
-            <div>
-              <p style="color: var(--muted); margin: 4px 0 6px;">Фирменный щит UNETvpn</p>
-              <p style="font-size: 18px; margin: 0; font-weight: 700;">Открытый U-щит — конфиг в пару касаний</p>
-            </div>
-          </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">Быстрый старт</h3>
+          <p style="color: var(--muted);">Оформите тариф и получите конфиг в боте. Подключение занимает 1–2 минуты.</p>
+          <a class="btn" href="https://t.me/UNET_shop_bot" target="_blank" rel="noopener">Получить конфиг в боте</a>
         </div>
       </div>
     </section>
 
-    <section id="how" class="section fade-in delay-1">
+    <section id="connect" class="section">
       <div class="container">
-        <h2 class="section-title">Как это работает</h2>
-        <p class="section-sub">Три шага — и вы в сети. Без банковских карт и лишних действий.</p>
+        <h2 class="section-title">Как подключиться</h2>
         <div class="steps card-grid">
           <div class="card">
             <div class="step-number">1</div>
-            <h3>Открой бот</h3>
-            <p class="muted">Выберите тариф в @UNET_shop_bot и оплатите криптой.</p>
+            <p>Откройте бота @UNET_shop_bot</p>
           </div>
           <div class="card">
             <div class="step-number">2</div>
-            <h3>Скачай OpenVPN</h3>
-            <p class="muted">Установите приложение под iOS, Android, Windows, macOS или Linux.</p>
+            <p>Выберите тариф и оплатите</p>
           </div>
           <div class="card">
             <div class="step-number">3</div>
-            <h3>Импортируй профиль</h3>
-            <p class="muted">Импортируйте конфиг и подключитесь в один тап. Если нужно — подскажем.</p>
+            <p>Получите конфиг для Xray (VLESS + REALITY)</p>
+          </div>
+          <div class="card">
+            <div class="step-number">4</div>
+            <p>Установите приложение-клиент и добавьте конфиг</p>
+          </div>
+          <div class="card">
+            <div class="step-number">5</div>
+            <p>Подключитесь — готово ✅</p>
           </div>
         </div>
-        <p class="tiny" style="margin-top: 10px;">Если нужно — подскажем в поддержке.</p>
-      </div>
-    </section>
-
-    <section id="guide" class="section fade-in">
-      <div class="container">
-        <h2 class="section-title">Как подключить UNETvpn за 3 минуты</h2>
-        <p class="section-sub">Для телефона и ПК. Нужен OpenVPN и файл .ovpn из бота.</p>
-        <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
-          <div class="card">
-            <span class="pill">Телефон (iOS / Android)</span>
-            <div class="steps" style="margin-top: 12px;">
-              <div>
-                <div class="step-number">1</div>
-                <p class="muted">Установи OpenVPN Connect (App Store / Google Play).</p>
-              </div>
-              <div>
-                <div class="step-number">2</div>
-                <p class="muted">Открой бота @UNET_shop_bot и получи конфиг (.ovpn).</p>
-              </div>
-              <div>
-                <div class="step-number">3</div>
-                <p class="muted">Открой .ovpn через OpenVPN → Import → Connect.</p>
-              </div>
-              <div>
-                <div class="step-number">4</div>
-                <p class="muted">Готово ✅ Интернет идёт через зашифрованный туннель.</p>
-              </div>
-            </div>
-            <p class="tiny" style="margin-top: 10px;">Если не подключается — попробуй другой сервер в «📡 Servers»</p>
-            <p class="tiny">Нужна помощь? Напиши в боте код-слово СНЕГ ❄️</p>
-          </div>
-          <div class="card">
-            <span class="pill">ПК (Windows / macOS)</span>
-            <div class="steps" style="margin-top: 12px;">
-              <div>
-                <div class="step-number">1</div>
-                <p class="muted">Скачай официальный OpenVPN / OpenVPN Connect под свою ОС.</p>
-              </div>
-              <div>
-                <div class="step-number">2</div>
-                <p class="muted">Импортируй файл .ovpn из бота @UNET_shop_bot.</p>
-              </div>
-              <div>
-                <div class="step-number">3</div>
-                <p class="muted">Нажми Connect и дождись статуса Connected ✅</p>
-              </div>
-            </div>
-            <p class="tiny" style="margin-top: 10px;">Если сайты не открываются — отключи другие VPN/Proxy и попробуй снова</p>
-            <p class="tiny">Нужна помощь? Напиши СНЕГ ❄️ в боте</p>
-          </div>
+        <p class="section-sub" style="margin-top: 14px;">Настройка занимает 1–2 минуты. Если что-то не получается — поддержка внутри бота.</p>
+        <div class="card">
+          <h3 style="margin-top: 0;">Рекомендуемые приложения</h3>
+          <ul class="list">
+            <li>iOS: Streisand / Shadowrocket</li>
+            <li>Android: v2rayNG / NekoBox</li>
+            <li>Windows: v2rayN</li>
+            <li>macOS: Streisand (или другой совместимый клиент)</li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <section id="pricing" class="section fade-in delay-2">
+    <section id="pricing" class="section">
       <div class="container">
         <h2 class="section-title">Тарифы</h2>
-        <p class="section-sub">Оплата: криптовалюта (без паспортов) • СБП доступно от 3 месяцев • Trial: 1 день</p>
-        <div class="card" style="margin-bottom: 14px;">
-          <h3 style="margin: 0 0 4px;">Для первых клиентов 🎁</h3>
-          <p class="muted" style="margin: 0 0 4px;">Первые 10 человек — 7 дней доступа бесплатно. Напиши боту код-слово: СНЕГ ❄️</p>
-          <p class="tiny" style="margin: 0;">Нашёл баг? Пришли лог в поддержку — дадим бонус.</p>
-        </div>
-        <div class="pricing-grid card-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+        <p class="section-sub">Выберите подходящий вариант и получите конфиг в боте.</p>
+        <div class="pricing-grid">
           <div class="card">
-            <span class="pill">Trial — 1 день</span>
-            <div class="price">Бесплатно</div>
+            <span class="pill">Trial</span>
+            <div class="price">3 дня</div>
             <ul class="list">
-              <li>Профили OpenVPN</li>
-              <li>Несколько локаций</li>
-              <li>Поддержка</li>
+              <li>Пробный доступ</li>
+              <li>Подключение через Telegram-бота</li>
             </ul>
-            <a class="btn" href="https://t.me/UNET_shop_bot" target="_blank" rel="noopener">Взять Trial</a>
-            <p class="tiny" style="margin-top: 10px;">Оплата: не нужна • Доступен 1 раз</p>
+            <a class="btn" href="https://t.me/UNET_shop_bot" target="_blank" rel="noopener">Получить конфиг в боте</a>
           </div>
           <div class="card">
             <span class="pill">1 месяц</span>
-            <div class="price">$4.99</div>
+            <div class="price">$3.55</div>
             <ul class="list">
-              <li>Профили OpenVPN</li>
-              <li>Несколько локаций</li>
-              <li>Поддержка</li>
+              <li>Стабильный доступ</li>
+              <li>Поддержка в боте</li>
             </ul>
-            <a class="btn" href="https://t.me/UNET_shop_bot" target="_blank" rel="noopener">Выбрать</a>
-            <p class="tiny" style="margin-top: 10px;">Оплата: крипто</p>
+            <a class="btn" href="https://t.me/UNET_shop_bot" target="_blank" rel="noopener">Получить конфиг в боте</a>
           </div>
           <div class="card">
             <span class="pill">3 месяца</span>
-            <div class="price">$12.99</div>
+            <div class="price">$9.55</div>
             <ul class="list">
-              <li>Профили OpenVPN</li>
-              <li>Несколько локаций</li>
-              <li>Поддержка</li>
+              <li>Стабильный доступ</li>
+              <li>Поддержка в боте</li>
             </ul>
-            <a class="btn" href="https://t.me/UNET_shop_bot" target="_blank" rel="noopener">Выбрать</a>
-            <p class="tiny" style="margin-top: 10px;">Оплата: крипто / СБП</p>
+            <a class="btn" href="https://t.me/UNET_shop_bot" target="_blank" rel="noopener">Получить конфиг в боте</a>
           </div>
           <div class="card">
             <span class="badge">Выгодно</span>
             <span class="pill">12 месяцев</span>
-            <div class="price">$39.99</div>
+            <div class="price">$31.95</div>
             <ul class="list">
-              <li>Профили OpenVPN</li>
-              <li>Несколько локаций</li>
-              <li>Поддержка</li>
+              <li>Максимальная экономия — около 25%</li>
+              <li>Поддержка в боте</li>
             </ul>
-            <a class="btn" href="https://t.me/UNET_shop_bot" target="_blank" rel="noopener">Выбрать</a>
-            <p class="tiny" style="margin-top: 10px;">Оплата: крипто / СБП</p>
+            <a class="btn" href="https://t.me/UNET_shop_bot" target="_blank" rel="noopener">Получить конфиг в боте</a>
           </div>
         </div>
-        <p class="tiny" style="margin-top: 12px;">Актуальная сумма и варианты оплаты — в боте @UNET_shop_bot.</p>
       </div>
     </section>
 
-    <section id="why" class="section fade-in delay-3">
+    <section id="why" class="section">
       <div class="container">
         <h2 class="section-title">Почему мы</h2>
-        <p class="section-sub">Минимум шагов, максимум удобства. Всё через OpenVPN и крипто-оплату.</p>
+        <p class="section-sub">UNET VPN работает на Xray (VLESS + REALITY), быстро подключается и стабильно работает в разных сетях.</p>
         <div class="why-grid card-grid">
-          <div class="card why-item">
-            <div class="why-icon">⚡️</div>
-            <h3>Простое подключение</h3>
-            <p class="muted">Быстро получаете конфиг и подключаетесь без сложных инструкций.</p>
-          </div>
-          <div class="card why-item">
-            <div class="why-icon">🛡️</div>
-            <h3>OpenVPN профили</h3>
-            <p class="muted">Готовые профили, совместимые с популярными клиентами.</p>
-          </div>
-          <div class="card why-item">
-            <div class="why-icon">💳</div>
-            <h3>Крипто-оплата</h3>
-            <p class="muted">Платите криптовалютой, без банковских карт.</p>
-          </div>
-          <div class="card why-item">
-            <div class="why-icon">🖥️</div>
-            <h3>Все платформы</h3>
-            <p class="muted">Работает на iOS, Android, Windows, macOS и Linux.</p>
-          </div>
-          <div class="card why-item">
-            <div class="why-icon">🤝</div>
-            <h3>Поддержка</h3>
-            <p class="muted">Помогаем с настройкой и ответим на вопросы в боте.</p>
-          </div>
-          <div class="card why-item">
-            <div class="why-icon">🚀</div>
-            <h3>Стабильная скорость</h3>
-            <p class="muted">Локации подбираем так, чтобы сохранять комфортный доступ.</p>
-          </div>
+          <div class="card"><h3>⚡ Стабильно</h3><p>Подключение сохраняется даже в сложных сетях.</p></div>
+          <div class="card"><h3>🚀 Быстро</h3><p>Высокая скорость для повседневных задач.</p></div>
+          <div class="card"><h3>🤝 Поддержка</h3><p>Помощь и подсказки внутри Telegram-бота.</p></div>
         </div>
       </div>
     </section>
 
-    <section id="faq" class="section fade-in">
+    <section id="faq" class="section">
       <div class="container">
         <h2 class="section-title">FAQ</h2>
-        <p class="section-sub">Коротко о подключении, оплате и поддержке.</p>
         <div class="card-grid">
           <div class="faq-item">
-            <button class="faq-question" aria-expanded="false" aria-controls="faq1"><span>Как подключиться?</span><span>+</span></button>
-            <div class="faq-answer" id="faq1" role="region" aria-live="polite">Откройте @UNET_shop_bot, выберите тариф, оплатите криптой и получите конфиг OpenVPN.</div>
+            <button class="faq-question" aria-expanded="false" aria-controls="faq1"><span>Как быстро я подключусь?</span><span>+</span></button>
+            <div class="faq-answer" id="faq1" role="region">Обычно 1–2 минуты: оплачиваете тариф в боте, получаете конфиг и добавляете его в приложение.</div>
           </div>
           <div class="faq-item">
-            <button class="faq-question" aria-expanded="false" aria-controls="faq2"><span>Что нужно установить?</span><span>+</span></button>
-            <div class="faq-answer" id="faq2" role="region" aria-live="polite">Установите официальный клиент OpenVPN для своей платформы, затем импортируйте выданный профиль.</div>
+            <button class="faq-question" aria-expanded="false" aria-controls="faq2"><span>На чём работает UNET VPN?</span><span>+</span></button>
+            <div class="faq-answer" id="faq2" role="region">Мы используем Xray (VLESS + REALITY) — современную технологию, которая обеспечивает стабильное соединение в разных сетях.</div>
           </div>
           <div class="faq-item">
-            <button class="faq-question" aria-expanded="false" aria-controls="faq3"><span>Подходит ли для телефона?</span><span>+</span></button>
-            <div class="faq-answer" id="faq3" role="region" aria-live="polite">Да, работает на iOS и Android через приложение OpenVPN Connect.</div>
+            <button class="faq-question" aria-expanded="false" aria-controls="faq3"><span>Какие устройства поддерживаются?</span><span>+</span></button>
+            <div class="faq-answer" id="faq3" role="region">iOS, Android, Windows и macOS. В боте есть подсказки по установке приложения и добавлению конфига.</div>
           </div>
           <div class="faq-item">
-            <button class="faq-question" aria-expanded="false" aria-controls="faq4"><span>Сколько устройств можно подключить?</span><span>+</span></button>
-            <div class="faq-answer" id="faq4" role="region" aria-live="polite">Обычно можно подключать несколько устройств. Точный лимит уточняйте в боте.</div>
+            <button class="faq-question" aria-expanded="false" aria-controls="faq4"><span>Можно ли попробовать перед покупкой?</span><span>+</span></button>
+            <div class="faq-answer" id="faq4" role="region">Да, есть Trial на 3 дня.</div>
           </div>
           <div class="faq-item">
-            <button class="faq-question" aria-expanded="false" aria-controls="faq5"><span>Как быстро приходит доступ после оплаты?</span><span>+</span></button>
-            <div class="faq-answer" id="faq5" role="region" aria-live="polite">После подтверждения крипто-платежа бот выдаст конфигурацию и инструкции.</div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false" aria-controls="faq6"><span>Что делать, если не подключается?</span><span>+</span></button>
-            <div class="faq-answer" id="faq6" role="region" aria-live="polite">Напишите в поддержку внутри бота — поможем подобрать сервер и проверить настройки.</div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false" aria-controls="faq7"><span>Какие способы оплаты доступны?</span><span>+</span></button>
-            <div class="faq-answer" id="faq7" role="region" aria-live="polite">Криптовалюта (без паспортов). СБП доступно от 3 месяцев.</div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false" aria-controls="faq8"><span>Есть ли поддержка?</span><span>+</span></button>
-            <div class="faq-answer" id="faq8" role="region" aria-live="polite">Да, отвечаем на вопросы и помогаем с импортом профиля прямо в боте.</div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false" aria-controls="faq9"><span>Есть ли Trial?</span><span>+</span></button>
-            <div class="faq-answer" id="faq9" role="region" aria-live="polite">Да, Trial — 1 день (доступен 1 раз).</div>
+            <button class="faq-question" aria-expanded="false" aria-controls="faq5"><span>Что делать, если не подключается?</span><span>+</span></button>
+            <div class="faq-answer" id="faq5" role="region">Откройте поддержку в боте — поможем подобрать приложение и проверить настройки.</div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section fade-in">
+    <section class="section">
       <div class="container cta-final">
-        <h2 style="margin: 0 0 12px;">Готов подключиться?</h2>
-        <p class="section-sub" style="margin: 0 0 18px;">Подключение обычно занимает несколько минут.</p>
-        <a class="btn" href="https://t.me/UNET_shop_bot" target="_blank" rel="noopener">Открыть @UNET_shop_bot</a>
+        <h2 style="margin: 0 0 12px;">Готовы подключиться?</h2>
+        <p class="section-sub" style="margin: 0 0 18px;">Подключение обычно занимает 1–2 минуты.</p>
+        <a class="btn" href="https://t.me/UNET_shop_bot" target="_blank" rel="noopener">Подключиться в Telegram</a>
       </div>
     </section>
   </main>
@@ -654,9 +358,9 @@
   <footer>
     <div class="container">
       <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;">
-        <div class="brand">UNETvpn</div>
+        <div class="brand">UNET VPN</div>
         <div class="links">
-          <a href="#how">Как это работает</a>
+          <a href="#connect">Как подключиться</a>
           <a href="#pricing">Тарифы</a>
           <a href="#why">Почему мы</a>
           <a href="#faq">FAQ</a>
@@ -685,20 +389,15 @@
     const faqItems = document.querySelectorAll('.faq-item');
     faqItems.forEach((item) => {
       const btn = item.querySelector('.faq-question');
-      const answer = item.querySelector('.faq-answer');
       btn.addEventListener('click', () => {
         const isActive = item.classList.contains('active');
         faqItems.forEach((i) => {
           i.classList.remove('active');
-          const b = i.querySelector('.faq-question');
-          b.setAttribute('aria-expanded', 'false');
+          i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
         });
         if (!isActive) {
           item.classList.add('active');
           btn.setAttribute('aria-expanded', 'true');
-          answer.style.maxHeight = answer.scrollHeight + 'px';
-        } else {
-          answer.style.maxHeight = null;
         }
       });
     });
