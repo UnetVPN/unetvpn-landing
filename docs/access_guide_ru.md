@@ -23,4 +23,4 @@
 
 Открой поддержку в боте — поможем выбрать приложение и проверить настройки.
 
-Бот: @UNET_shop_bot | Сайт: https://unetvpn.net
+Telegram-бот проекта: @UNET_shop_bot | Техподдержка Telegram: https://t.me/Unet_boss | Email: unetadmin@disroot.org | Сайт: https://unetvpn.net
