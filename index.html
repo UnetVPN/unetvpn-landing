@@ -115,6 +115,9 @@
       font-size: 13px;
     }
     .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .support-box { margin-top: 16px; padding: 14px 16px; border: 1px solid var(--border); border-radius: 16px; background: var(--bg-soft); color: var(--muted); }
+    .support-box strong { color: var(--text); }
+    .support-box a { color: var(--text); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
     .pill { display: inline-flex; padding: 6px 10px; border-radius: 999px; border: 1px solid var(--border); background: var(--bg-soft); color: var(--muted); font-size: 12px; }
     .card-grid, .pricing-grid, .steps, .why-grid { display: grid; gap: 14px; }
     .card {
@@ -208,6 +211,10 @@
             <a class="btn" href="https://t.me/UNET_shop_bot" target="_blank" rel="noopener">Подключиться в Telegram</a>
             <a class="btn secondary" href="#pricing">Тарифы</a>
           </div>
+          <div class="support-box" aria-label="Контакты поддержки">
+            <strong>Telegram-бот проекта:</strong> <a href="https://t.me/UNET_shop_bot" target="_blank" rel="noopener">@UNET_shop_bot</a><br>
+            <strong>Поддержка:</strong> Telegram <a href="https://t.me/Unet_boss" target="_blank" rel="noopener">@Unet_boss</a> · Email <a href="mailto:unetadmin@disroot.org">unetadmin@disroot.org</a>
+          </div>
           <div class="chips" aria-label="Преимущества">
             <span class="chip">Стабильное подключение</span>
             <span class="chip">Высокая скорость</span>
@@ -218,6 +225,8 @@
         <div class="card">
           <h3 style="margin-top: 0;">Быстрый старт</h3>
           <p style="color: var(--muted);">Оформите тариф и получите профиль доступа в боте. Подключение занимает 1–2 минуты.</p>
+          <p class="tiny"><strong>Telegram-бот проекта:</strong> <a href="https://t.me/UNET_shop_bot" target="_blank" rel="noopener">@UNET_shop_bot</a></p>
+          <p class="tiny"><strong>Поддержка:</strong> <a href="https://t.me/Unet_boss" target="_blank" rel="noopener">@Unet_boss</a> · <a href="mailto:unetadmin@disroot.org">unetadmin@disroot.org</a></p>
           <a class="btn" href="https://t.me/UNET_shop_bot" target="_blank" rel="noopener">Получить профиль в боте</a>
         </div>
       </div>
@@ -248,7 +257,7 @@
             <p>Подключитесь — готово ✅</p>
           </div>
         </div>
-        <p class="section-sub" style="margin-top: 14px;">Настройка занимает 1–2 минуты. Если что-то не получается — поддержка внутри бота.</p>
+        <p class="section-sub" style="margin-top: 14px;">Настройка занимает 1–2 минуты. Если что-то не получается — напишите в техподдержку Telegram <a href="https://t.me/Unet_boss" target="_blank" rel="noopener">@Unet_boss</a> или на email <a href="mailto:unetadmin@disroot.org">unetadmin@disroot.org</a>.</p>
         <div class="card">
           <h3 style="margin-top: 0;">Рекомендуемые приложения</h3>
           <ul class="list">
@@ -314,7 +323,7 @@
         <div class="why-grid card-grid">
           <div class="card"><h3>⚡ Стабильно</h3><p>Подключение сохраняется даже в сложных сетях.</p></div>
           <div class="card"><h3>🚀 Быстро</h3><p>Высокая скорость для повседневных задач.</p></div>
-          <div class="card"><h3>🤝 Поддержка</h3><p>Помощь и подсказки внутри Telegram-бота.</p></div>
+          <div class="card"><h3>🤝 Поддержка</h3><p>Telegram: <a href="https://t.me/Unet_boss" target="_blank" rel="noopener">@Unet_boss</a><br>Email: <a href="mailto:unetadmin@disroot.org">unetadmin@disroot.org</a></p></div>
         </div>
       </div>
     </section>
@@ -341,7 +350,7 @@
           </div>
           <div class="faq-item">
             <button class="faq-question" aria-expanded="false" aria-controls="faq5"><span>Что делать, если не подключается?</span><span>+</span></button>
-            <div class="faq-answer" id="faq5" role="region">Откройте поддержку в боте — поможем подобрать приложение и проверить настройки.</div>
+            <div class="faq-answer" id="faq5" role="region">Напишите в техподдержку Telegram <a href="https://t.me/Unet_boss" target="_blank" rel="noopener">@Unet_boss</a> или на email <a href="mailto:unetadmin@disroot.org">unetadmin@disroot.org</a>.</div>
           </div>
         </div>
       </div>
@@ -365,11 +374,12 @@
           <a href="#pricing">Тарифы</a>
           <a href="#why">Почему мы</a>
           <a href="#faq">FAQ</a>
-          <a href="/terms/">Соглашение</a>
-          <a href="/privacy/">Конфиденциальность</a>
+          <a href="/terms/">Пользовательское соглашение</a>
+          <a href="/privacy/">Политика конфиденциальности</a>
         </div>
       </div>
-      <p class="tiny" style="margin-top: 10px;">Поддержка: <a href="https://t.me/UNET_shop_bot" target="_blank" rel="noopener">@UNET_shop_bot</a> · Канал: <a href="https://t.me/UNET_vpn" target="_blank" rel="noopener">@UNET_vpn</a></p>
+      <p class="tiny" style="margin-top: 10px;">Telegram-бот проекта: <a href="https://t.me/UNET_shop_bot" target="_blank" rel="noopener">@UNET_shop_bot</a></p>
+      <p class="tiny" style="margin-top: 10px;">Техподдержка Telegram: <a href="https://t.me/Unet_boss" target="_blank" rel="noopener">@Unet_boss</a> · Email: <a href="mailto:unetadmin@disroot.org">unetadmin@disroot.org</a></p>
       <p class="tiny" style="margin-top: 10px;">© <span id="year"></span> UNET · unetvpn.net</p>
     </div>
   </footer>
